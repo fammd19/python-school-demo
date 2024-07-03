@@ -6,6 +6,8 @@ from blueprints.student_bp import student_bp
 from flask_restful import Api
 from controllers.courses_controller import Courses, CourseById
 from controllers.students_controller import Students, StudentById, StudentEnrol
+from flask_cors import CORS
+
 
 app = Flask(__name__)
 
@@ -22,6 +24,8 @@ migrate = Migrate(app, db)
 api = Api(app)
 
 db.init_app(app)
+
+CORS(app)
 
 @app.route('/')
 def index():
